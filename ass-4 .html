@@ -1,0 +1,521 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelGo - Bus and Train Booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f6fb;
+    color: #263238;
+    line-height: 1.6;
+}
+
+
+header {
+    background-color: #020e1a;
+    color: rgb(255, 1, 1);
+    text-align: center;
+    padding: 25px;
+}
+
+header h1 {
+    font-size: 34px;
+}
+
+
+nav {
+    background-color: #031f38;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px;
+    color: #7801aba0;
+}
+
+nav a {
+    color: rgb(219, 13, 13);
+    text-decoration: none;
+    padding: 8px 13px;
+    border-radius: 5px;
+}
+
+nav a:hover {
+    background-color: #1d4f7e52;
+}
+
+
+.hero {
+    background: linear-gradient(135deg, #41939c, #0d71dc);
+    color: rgb(251, 47, 47);
+    text-align: center;
+    padding: 65px 20px;
+}
+
+.hero h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+
+.section {
+    padding: 40px 7%;
+}
+
+.section h2 {
+    color: #1f5895;
+    text-align: center;
+    margin-bottom: 22px;
+}
+
+.notice {
+    text-align: center;
+    color: #5c6770;
+    font-size: 14px;
+    margin: 12px 0 20px;
+}
+
+
+.booking-form {
+    background-color: rgb(233, 47, 47);
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(11, 4, 4, 0.08);
+}
+
+.booking-form label {
+    display: block;
+    font-weight: bold;
+    margin: 12px 0 5px;
+}
+
+.booking-form input,
+.booking-form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #0c2543;
+    border-radius: 6px;
+    font-size: 15px;
+    background-color: rgb(251, 249, 249);
+}
+
+.booking-form input:focus,
+.booking-form select:focus {
+    outline: 2px solid #87b1d9;
+    border-color: #414f5d;
+}
+
+.booking-form button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 13px;
+    border: none;
+    border-radius: 6px;
+    background-color: #087f8c;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.booking-form button:hover {
+    background-color: #06616b;
+}
+
+
+.service-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.service-card {
+    background-color: white;
+    flex: 1 1 280px;
+    max-width: 450px;
+    padding: 25px;
+    border-radius: 12px;
+    border-top: 5px solid #087f8c;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.service-card h3 {
+    color: #123c69;
+    margin-bottom: 12px;
+}
+
+.fare {
+    color: #087f8c;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.button {
+    display: inline-block;
+    background-color: #123c69;
+    color: white;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+}
+
+.button:hover {
+    background-color: #3478b8;
+}
+
+
+.seat-layout {
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 25px;
+    background-color: white;
+    border-radius: 12px;
+
+}
+
+.seat-layout h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #123c69;
+}
+
+.driver {
+    text-align: right;
+    background-color: #e2e8f0;
+    padding: 8px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.seat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 15px;
+}
+
+.seat {
+    flex: 1;
+    padding: 10px 3px;
+    text-align: center;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.available {
+    background-color: #d7f3e4;
+    color: #166534;
+    border: 1px solid #86cda6;
+}
+
+.booked {
+    background-color: #ffdede;
+    color: #a61b1b;
+    border: 1px solid #e9a1a1;
+}
+
+.aisle {
+    flex: 0.5;
+}
+
+.seat-legend {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 22px;
+    font-size: 13px;
+}
+
+.available-key::before {
+    content: "■ ";
+    color: #26965b;
+}
+
+.booked-key::before {
+    content: "■ ";
+    color: #d64545;
+}
+
+/* Fare table */
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+th,
+td {
+    border: 1px solid #d5dce5;
+    padding: 14px;
+    text-align: center;
+}
+
+th {
+    background-color: #123c69;
+    color: white;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #eaf2f8;
+}
+
+tbody tr:hover {
+    background-color: #dcecf5;
+}
+
+/* Footer */
+footer {
+    background-color: #102a43;
+    color: white;
+    text-align: center;
+    padding: 22px;
+    margin-top: 20px;
+}
+
+
+</style>
+<body>
+
+    <header>
+        <h1>TravelGo</h1>
+        <p>Your Journey, Your Choice!</p>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#booking">Book Tickets</a>
+        <a href="#buses">Buses</a>
+        <a href="#trains">Trains</a>
+        <a href="#seats">Select Seats</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="home" class="hero">
+        <h2>Plan Your Journey</h2>
+        <p>Book bus and train tickets with ease.</p>
+    </section>
+
+    <section id="booking" class="section">
+        <h2>Search Your Journey</h2>
+
+        <form action="#services" method="get" class="booking-form">
+
+            <label for="source">From</label>
+            <input type="text" id="source" name="source"
+                   placeholder="Enter source city" required>
+
+            <label for="destination">To</label>
+            <input type="text" id="destination" name="destination"
+                   placeholder="Enter destination city" required>
+
+            <label for="travel-date">Journey Date</label>
+            <input type="date" id="travel-date" name="travel-date" required>
+
+            <label for="travel-type">Travel Type</label>
+            <select id="travel-type" name="travel-type" required>
+                <option value="">Select travel type</option>
+                <option value="bus">Bus</option>
+                <option value="train">Train</option>
+            </select>
+
+            <label for="passengers">Number of Passengers</label>
+            <input type="number" id="passengers" name="passengers"
+                   min="1" max="6" value="1" required>
+
+            <button type="submit">Search Services</button>
+        </form>
+    </section>
+
+    <section id="services" class="section">
+        <h2>Available Travel Services</h2>
+        <p class="notice">
+            Sample services and fares for demonstration only.
+        </p>
+
+        <div class="service-cards">
+
+            <article id="buses" class="service-card">
+                <h3>Bus Services</h3>
+                <p><strong>Service:</strong> Express Travels</p>
+                <p><strong>Route:</strong> Vijayawada to Hyderabad</p>
+                <p><strong>Departure:</strong> 9:00 PM</p>
+                <p><strong>Arrival:</strong> 5:00 AM</p>
+                <p><strong>Type:</strong> AC Sleeper</p>
+                <p class="fare">Sample Fare: ₹850</p>
+                <a class="button" href="#seats">View Seats</a>
+            </article>
+
+            <article id="trains" class="service-card">
+                <h3>Train Services</h3>
+                <p><strong>Service:</strong> Intercity Express</p>
+                <p><strong>Route:</strong> Vijayawada to Hyderabad</p>
+                <p><strong>Departure:</strong> 7:00 AM</p>
+                <p><strong>Arrival:</strong> 1:00 PM</p>
+                <p><strong>Class:</strong> Chair Car</p>
+                <p class="fare">Sample Fare: ₹450</p>
+                <a class="button" href="#seats">View Seats</a>
+            </article>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Passenger Details</h2>
+
+        <form class="booking-form" action="#fare" method="get">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname"
+                   placeholder="Enter passenger name" required>
+
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age"
+                   min="1" max="120" required>
+
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender" required>
+                <option value="">Select gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+                <option>Prefer not to say</option>
+            </select>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email"
+                   placeholder="example@email.com" required>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone"
+                   placeholder="Enter phone number"
+                   pattern="[0-9]{10}" required>
+
+            <button type="submit">Submit Details</button>
+        </form>
+    </section>
+
+    <section id="seats" class="section">
+        <h2>Seat Selection Layout</h2>
+        <p class="notice">
+            Clickable seat selection requires JavaScript.
+            This example shows a visual seat layout using HTML and CSS.
+        </p>
+
+        <div class="seat-layout">
+            <h3>Bus Seat Layout</h3>
+            <p class="driver">Driver</p>
+
+            <div class="seat-row">
+                <span class="seat available">A1</span>
+                <span class="seat available">A2</span>
+                <span class="aisle"></span>
+                <span class="seat booked">A3</span>
+                <span class="seat available">A4</span>
+            </div>
+
+            <div class="seat-row">
+                <span class="seat available">B1</span>
+                <span class="seat available">B2</span>
+                <span class="aisle"></span>
+                <span class="seat available">B3</span>
+                <span class="seat available">B4</span>
+            </div>
+
+            <div class="seat-row">
+                <span class="seat booked">C1</span>
+                <span class="seat available">C2</span>
+                <span class="aisle"></span>
+                <span class="seat available">C3</span>
+                <span class="seat available">C4</span>
+            </div>
+
+            <div class="seat-legend">
+                <span class="available-key">Available</span>
+                <span class="booked-key">Booked</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="fare" class="section">
+        <h2>Fare Information</h2>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Travel Type</th>
+                        <th>Class</th>
+                        <th>Sample Fare</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Bus</td>
+                        <td>AC Sleeper</td>
+                        <td>₹850</td>
+                    </tr>
+                    <tr>
+                        <td>Bus</td>
+                        <td>Non-AC Seater</td>
+                        <td>₹500</td>
+                    </tr>
+                    <tr>
+                        <td>Train</td>
+                        <td>Chair Car</td>
+                        <td>₹450</td>
+                    </tr>
+                    <tr>
+                        <td>Train</td>
+                        <td>Sleeper Class</td>
+                        <td>₹300</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="notice">
+            Actual fares depend on the service, date, route, and seat availability.
+        </p>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Contact Us</h2>
+        <p>Email: support@travelgo.example</p>
+        <p>Phone: 00000 00000 (sample contact)</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 TravelGo | Student Web Development Project</p>
+        <p>Demo interface only — no actual ticket booking.</p>
+    </footer>
+
+</body>
+</html>

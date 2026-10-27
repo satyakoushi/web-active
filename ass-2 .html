@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Information and Admissions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    
+/* General page styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f7fb;
+    color: #263238;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #123c69, #2563a6);
+    color: white;
+    text-align: center;
+    padding: 35px 15px;
+}
+
+header h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+/* Navigation bar */
+nav {
+    background-color: #102a43;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 14px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #3478b8;
+}
+
+/* Hero sections */
+.hero,
+.college-hero {
+    text-align: center;
+    padding: 80px 20px;
+    color: white;
+}
+
+.hero {
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+}
+
+.college-hero {
+    background: linear-gradient(135deg, #087f8c, #164e63);
+}
+
+.hero h2,
+.college-hero h2 {
+    font-size: 34px;
+    margin-bottom: 15px;
+}
+
+.hero p,
+.college-hero p {
+    margin-bottom: 12px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    background-color: #ffb703;
+    color: #17202a;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 12px 22px;
+    margin-top: 18px;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #fb8500;
+}
+
+/* Content sections */
+.section {
+    padding: 45px 8%;
+    text-align: center;
+}
+
+.section h2 {
+    color: #123c69;
+    margin-bottom: 22px;
+    font-size: 28px;
+}
+
+.section > p {
+    max-width: 850px;
+    margin: 10px auto;
+}
+
+/* Cards */
+.cards {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 22px;
+    margin-top: 25px;
+}
+
+.card {
+    background-color: white;
+    flex: 1 1 220px;
+    max-width: 350px;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+    color: #087f8c;
+    margin-bottom: 12px;
+}
+
+/* Admissions list */
+.admission-list {
+    display: inline-block;
+    text-align: left;
+    margin: 15px auto;
+    padding-left: 25px;
+}
+
+.admission-list li {
+    margin-bottom: 8px;
+}
+
+/* Notes */
+.note {
+    font-size: 14px;
+    color: #555;
+    font-style: italic;
+    margin-top: 18px;
+}
+
+/* Footer */
+footer {
+    background-color: #102a43;
+    color: white;
+    text-align: center;
+    padding: 22px;
+    margin-top: 20px;
+}
+
+</style>
+<body>
+
+    <header>
+        <h1>NRI Institute of Technology</h1>
+        <p>Education | Innovation | Excellence</p>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About College</a>
+        <a href="#courses">Courses</a>
+        <a href="#faculty">Faculty</a>
+        <a href="#admissions">Admissions</a>
+        <a href="#contact">Contact</a>
+        <a href="index.html">My Portfolio</a>
+    </nav>
+
+    <section id="home" class="college-hero">
+        <h2>Welcome to Our College</h2>
+        <p>Learn new skills, explore your interests, and build your future.</p>
+        <a class="btn" href="#admissions">Admission Information</a>
+    </section>
+
+    <section id="about" class="section">
+        <h2>About Our College</h2>
+        <p>
+            Our college aims to provide quality education and encourage
+            students to develop technical knowledge, communication skills,
+            creativity, and problem-solving abilities.
+        </p>
+        <p>
+            Students can participate in academic activities, workshops,
+            projects, and other learning opportunities.
+        </p>
+    </section>
+
+    <section class="section">
+        <h2>College Highlights</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Modern Learning</h3>
+                <p>Learn through classes, practical work, and projects.</p>
+            </div>
+            <div class="card">
+                <h3>Computer Labs</h3>
+                <p>Practice programming and develop technical skills.</p>
+            </div>
+            <div class="card">
+                <h3>Student Activities</h3>
+                <p>Take part in workshops, events, and team activities.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="courses" class="section">
+        <h2>Courses Offered</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>B.Tech CSE</h3>
+                <p>Computer Science and Engineering</p>
+            </div>
+            <div class="card">
+                <h3>B.Tech ECE</h3>
+                <p>Electronics and Communication Engineering</p>
+            </div>
+            <div class="card">
+                <h3>B.Tech EEE</h3>
+                <p>Electrical and Electronics Engineering</p>
+            </div>
+            <div class="card">
+                <h3>B.Tech Mechanical</h3>
+                <p>Mechanical Engineering</p>
+            </div>
+            <div class="card">
+                <h3>B.Tech Civil</h3>
+                <p>Civil Engineering</p>
+            </div>
+        </div>
+        <p class="note">
+            Note: Confirm the currently available courses with the college.
+        </p>
+    </section>
+
+    <section id="faculty" class="section">
+        <h2>Faculty Information</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Computer Science</h3>
+                <p>Faculty supporting programming and computing subjects.</p>
+            </div>
+            <div class="card">
+                <h3>Electronics</h3>
+                <p>Faculty teaching electronics and communication subjects.</p>
+            </div>
+            <div class="card">
+                <h3>Basic Sciences</h3>
+                <p>Faculty teaching mathematics, physics, and other subjects.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="admissions" class="section">
+        <h2>Admissions</h2>
+        <p>
+            Students interested in admission should check the official
+            college website or contact the admissions office for eligibility,
+            application dates, fees, and required documents.
+        </p>
+
+        <h3>Documents Usually Required</h3>
+        <ul class="admission-list">
+            <li>10th class marks memo</li>
+            <li>Intermediate marks memo</li>
+            <li>Transfer certificate, if required</li>
+            <li>Entrance examination details, if applicable</li>
+            <li>Other documents requested by the college</li>
+        </ul>
+
+        <a class="btn" href="#contact">Contact the College</a>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Contact Information</h2>
+        <p>College: NRI Institute of Technology</p>
+        <p>Location: Potavarappadu, near Vijayawada, Andhra Pradesh</p>
+        <p>Email: Add the official college email here.</p>
+        <p>Phone: Add the official college contact number here.</p>
+        <p class="note">
+            Verify the address and contact details before publishing.
+        </p>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 College Information Website</p>
+    </footer>
+
+</body>
+</html>
